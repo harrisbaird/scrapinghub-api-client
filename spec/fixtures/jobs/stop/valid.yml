@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://SAMPLE_API_KEY:@dash.scrapinghub.com/api/jobs/delete.json
+    uri: https://SAMPLE_API_KEY:@dash.scrapinghub.com/api/jobs/stop.json
     body:
       encoding: UTF-8
-      string: job=00000%2F1%2F9&project=00000
+      string: job=00000%2F2%2F3&project=00000
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -21,18 +21,18 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Fri, 13 Nov 2015 05:21:14 GMT
+      - Fri, 13 Nov 2015 06:28:51 GMT
       Content-Type:
       - application/json
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '16'
       Connection:
       - keep-alive
       Vary:
       - Cookie
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"status": "ok", "count": 1}'
     http_version:
-  recorded_at: Fri, 13 Nov 2015 05:21:14 GMT
+  recorded_at: Fri, 13 Nov 2015 06:28:51 GMT
 recorded_with: VCR 3.0.0

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://SAMPLE_API_KEY:@dash.scrapinghub.com/api/jobs/delete.json
+    uri: https://SAMPLE_API_KEY:@dash.scrapinghub.com/api/jobs/stop.json
     body:
       encoding: UTF-8
       string: job=00000%2F1%2F9&project=invalid
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.8.0
       Date:
-      - Fri, 13 Nov 2015 05:21:14 GMT
+      - Fri, 13 Nov 2015 06:28:51 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -33,6 +33,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"status": "badrequest", "message": "invalid value for project: invalid"}'
-    http_version: 
-  recorded_at: Fri, 13 Nov 2015 05:21:14 GMT
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 06:28:51 GMT
 recorded_with: VCR 3.0.0

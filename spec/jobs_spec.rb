@@ -86,13 +86,13 @@ RSpec.describe Scrapinghub::Jobs do
   end
 
   describe '#stop' do
-    context 'with valid params', vcr: { cassette_name: 'jobs/stop/valid' } do
-      subject { instance.delete('00000', '00000/1/9') }
+    context 'with valid params', vcr: { cassette_name: 'jobs/stop/valid', record: :once } do
+      subject { instance.stop('00000', '00000/2/3') }
       it { is_expected.to eq 1 }
     end
 
     context 'with invalid project', vcr: { cassette_name: 'jobs/stop/invalid_project', record: :once } do
-      subject { -> { instance.delete('invalid', '00000/1/9') } }
+      subject { -> { instance.stop('invalid', '00000/1/9') } }
       it { is_expected.to raise_error Scrapinghub::BadRequest, 'invalid value for project: invalid' }
     end
   end
