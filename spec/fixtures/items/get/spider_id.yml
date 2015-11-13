@@ -1,0 +1,32 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://SAMPLE_API_KEY:@storage.scrapinghub.com/items/00000/1?format=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '153'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"},{"url":"https://google.com","_type":"TestingItem","image_url":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png","name":"Google"}]'
+    http_version: 
+  recorded_at: Fri, 13 Nov 2015 06:07:46 GMT
+recorded_with: VCR 3.0.0

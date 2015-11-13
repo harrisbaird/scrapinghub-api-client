@@ -26,10 +26,8 @@ RSpec.describe Scrapinghub::Jobs do
     end
 
     context 'when invalid', vcr: { cassette_name: 'jobs/schedule/invalid' } do
-      it 'raises a Scrapinghub::BadRequest exception' do
-        expect { instance.schedule('invalid', '') }.to raise_error Scrapinghub::BadRequest,
-                                                                   'invalid value for project: invalid'
-      end
+      subject { -> { instance.schedule('invalid', '') } }
+      it { is_expected.to raise_error Scrapinghub::BadRequest, 'invalid value for project: invalid' }
     end
   end
 
@@ -52,11 +50,50 @@ RSpec.describe Scrapinghub::Jobs do
       end
     end
 
-    context 'when invalid', vcr: { cassette_name: 'jobs/list/invalid' } do
-      it 'raises a Scrapinghub::BadRequest exception' do
-        expect { instance.list('invalid') }.to raise_error Scrapinghub::BadRequest,
-                                                           'invalid value for project: invalid'
-      end
+    context 'with invalid project', vcr: { cassette_name: 'jobs/list/invalid_project' } do
+      subject { -> { instance.list('invalid') } }
+      it { is_expected.to raise_error Scrapinghub::BadRequest, 'invalid value for project: invalid' }
+    end
+  end
+
+  describe '#update' do
+    context 'with valid params', vcr: { cassette_name: 'jobs/update/valid' } do
+      subject { instance.update('00000', '00000/1/9', add_tag: 'finished') }
+      it { is_expected.to eq 1 }
+    end
+
+    context 'missing update modifiers', vcr: { cassette_name: 'jobs/update/missing_update_modifiers' } do
+      subject { -> { instance.update('00000', '00000/1/9') } }
+      it { is_expected.to raise_error Scrapinghub::BadRequest, 'No update modifiers provided' }
+    end
+
+    context 'with invalid project', vcr: { cassette_name: 'jobs/update/invalid_project' } do
+      subject { -> { instance.update('invalid', '00000/1/9') } }
+      it { is_expected.to raise_error Scrapinghub::BadRequest, 'invalid value for project: invalid' }
+    end
+  end
+
+  describe '#delete' do
+    context 'with valid params', vcr: { cassette_name: 'jobs/delete/valid' } do
+      subject { instance.delete('00000', '00000/1/9') }
+      it { is_expected.to eq 1 }
+    end
+
+    context 'with invalid project', vcr: { cassette_name: 'jobs/delete/invalid_project' } do
+      subject { -> { instance.delete('invalid', '00000/1/9') } }
+      it { is_expected.to raise_error Scrapinghub::BadRequest, 'invalid value for project: invalid' }
+    end
+  end
+
+  describe '#stop' do
+    context 'with valid params', vcr: { cassette_name: 'jobs/stop/valid' } do
+      subject { instance.delete('00000', '00000/1/9') }
+      it { is_expected.to eq 1 }
+    end
+
+    context 'with invalid project', vcr: { cassette_name: 'jobs/stop/invalid_project', record: :once } do
+      subject { -> { instance.delete('invalid', '00000/1/9') } }
+      it { is_expected.to raise_error Scrapinghub::BadRequest, 'invalid value for project: invalid' }
     end
   end
 end

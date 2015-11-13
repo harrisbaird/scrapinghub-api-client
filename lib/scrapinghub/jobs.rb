@@ -4,7 +4,6 @@ module Scrapinghub
   class Jobs
     include HTTParty
     disable_rails_query_string_format
-    debug_output $stdout
 
     base_uri 'https://dash.scrapinghub.com/api'
 
@@ -23,18 +22,18 @@ module Scrapinghub
     end
 
     def update(project, job, opts = {})
-      opts = { body: query.merge(project: project, job: job) }
-      perform(:post, '/jobs/update.json', opts)
+      opts = { body: opts.merge(project: project, job: job) }
+      perform(:post, '/jobs/update.json', opts)['count']
     end
 
     def delete(project, job)
       opts = { body: { project: project, job: job } }
-      perform(:post, '/jobs/delete.json', opts)['status'] == 'ok'
+      perform(:post, '/jobs/delete.json', opts)['count']
     end
 
     def stop(project, job)
       opts = { body: { project: project, job: job } }
-      perform(:post, '/jobs/stop.json', opts)['status'] == 'ok'
+      perform(:post, '/jobs/stop.json', opts)['count']
     end
 
     private

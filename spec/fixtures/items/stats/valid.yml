@@ -1,0 +1,32 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://SAMPLE_API_KEY:@storage.scrapinghub.com/items/00000/1/1/stats
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '105'
+    body:
+      encoding: UTF-8
+      string: '{"counts":{"url":10,"_type":10,"image_url":10,"name":10},"totals":{"input_bytes":1490,"input_values":10}}'
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 06:19:18 GMT
+recorded_with: VCR 3.0.0
