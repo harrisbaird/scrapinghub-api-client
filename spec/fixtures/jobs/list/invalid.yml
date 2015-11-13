@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://SAMPLE_API_KEY:@dash.scrapinghub.com/api/jobs/list.json?project=invalid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: 'invalid value for project: invalid'
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Fri, 13 Nov 2015 02:52:41 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '73'
+      Connection:
+      - keep-alive
+      Vary:
+      - Cookie
+    body:
+      encoding: UTF-8
+      string: '{"status": "badrequest", "message": "invalid value for project: invalid"}'
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 02:52:41 GMT
+recorded_with: VCR 3.0.0
