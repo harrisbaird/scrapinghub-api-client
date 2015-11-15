@@ -50,6 +50,15 @@ RSpec.describe Scrapinghub::Jobs do
       end
     end
 
+    context 'with multiple args', vcr: { cassette_name: 'jobs/list/multiple_args' } do
+      it 'returns finished jobs' do
+        result = instance.list('00000', lacks_tag: ['parsed', 'scheduled'])
+        expect(result).to be_kind_of Array
+        expect(result.first).to be_kind_of Hash
+        expect(result.size).to eq 1
+      end
+    end
+
     context 'with invalid project', vcr: { cassette_name: 'jobs/list/invalid_project' } do
       subject { -> { instance.list('invalid') } }
       it { is_expected.to raise_error Scrapinghub::BadRequest, 'invalid value for project: invalid' }

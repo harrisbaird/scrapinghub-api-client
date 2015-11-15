@@ -3,8 +3,6 @@ require 'httparty'
 module Scrapinghub
   class Items
     include HTTParty
-    disable_rails_query_string_format
-
     base_uri 'https://storage.scrapinghub.com/items'
 
     def initialize(api_key)

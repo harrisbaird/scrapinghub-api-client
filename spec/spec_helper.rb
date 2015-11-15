@@ -6,6 +6,8 @@ require 'webmock'
 require 'vcr'
 require 'scrapinghub'
 
+WebMock::Config.instance.query_values_notation = :flat_array
+
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures'
   config.configure_rspec_metadata!
