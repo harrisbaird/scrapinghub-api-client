@@ -1,5 +1,3 @@
-require 'httparty'
-
 module Scrapinghub
   class Jobs
     include HTTParty
@@ -7,13 +5,15 @@ module Scrapinghub
 
     base_uri 'https://dash.scrapinghub.com/api'
 
-    def initialize(api_key)
-      self.class.basic_auth(api_key, nil)
+    def initialize(client)
+      @client = client
+      self.class.basic_auth(@client.api_key, nil)
     end
 
     def schedule(project, spider, opts = {})
       opts = { body: opts.merge(project: project, spider: spider) }
-      perform(:post, '/schedule.json', opts)['jobid']
+      id = perform(:post, '/schedule.json', opts)['jobid']
+      Scrapinghub::Job.new(@client, id)
     end
 
     def list(project, opts = {})
@@ -40,8 +40,14 @@ module Scrapinghub
 
     def perform(type, url, opts = {})
       res = self.class.send(type, url, opts)
-      fail BadRequest, res.parsed_response['message'] unless res.success?
-      res
+      return res if res.success?
+
+      case res.parsed_response['message']
+      when 'Authentication failed'
+        fail Scrapinghub::AuthFailed
+      else
+        fail Scrapinghub::BadRequest, res.parsed_response['message']
+      end
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Scrapinghub::Items do
-  let(:instance) { Scrapinghub::Items.new('SAMPLE_API_KEY') }
+  let(:instance) { Scrapinghub::Client.new('SAMPLE_API_KEY').items }
 
   describe '#get' do
     context 'with project_id', vcr: { cassette_name: 'items/get/project_id' } do

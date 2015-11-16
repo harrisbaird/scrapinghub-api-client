@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://SAMPLE_API_KEY:@storage.scrapinghub.com/logs/00000/1/1?format=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1095'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"time":1447544427277,"level":20,"message":"Log opened."},{"time":1447544427278,"level":20,"message":"[scrapy.log]
+        Scrapy 1.0.3.post6+g2d688cd started"},{"time":1447544427410,"level":20,"message":"[scrapy.utils.log]
+        Scrapy 1.0.3.post6+g2d688cd started (bot: testing)"},{"time":1447544427410,"level":20,"message":"[scrapy.utils.log]
+        Optional features available: ssl, http11, boto"},{"time":1447544427411,"level":20,"message":"[scrapy.utils.log]
+        Overridden settings: {''NEWSPIDER_MODULE'': ''testing.spiders'', ''LOG_LEVEL'':
+        ''INFO'', ''SPIDER_MODULES'': [''testing.spiders''], ''STATS_CLASS'': ''sh_scrapy.stats.HubStorageStatsCollector'',
+        ''BOT_NAME'': ''testing'', ''MEMUSAGE_LIMIT_MB'': 512, ''TELNETCONSOLE_HOST'':
+        ''0.0.0.0'', ''LOG_FILE'': ''scrapy.log'', ''MEMUSAGE_ENABLED'': True}"},{"time":1447544427694,"level":20,"message":"[scrapy.log]
+        HubStorage: writing items to http://storage.scrapinghub.com/items/00000/1/1"},{"time":1447544427695,"level":20,"message":"[scrapy.middleware]
+        Enabled extensions: CoreStats, TelnetConsole, MemoryUsage, LogStats, StackTraceDump,
+        CloseSpider, SpiderState, AutoThrottle, HubstorageExtension"},{"time":1447544427872,"level":20,"message":"[scrapy.middleware]
+        Enabled downloader middlewares: HttpAuthMiddleware, DownloadTimeoutMiddleware,
+        UserAgentMiddleware, RetryMiddleware, DefaultHeadersMiddleware, MetaRefreshMiddleware,
+        HttpCompressionMiddleware, RedirectMiddleware, CookiesMiddleware, ChunkedTransferMiddleware,
+        DownloaderStats"},{"time":1447544429511,"level":20,"message":"[scrapy.middleware]
+        Enabled spider middlewares: HubstorageMiddleware, HttpErrorMiddleware, OffsiteMiddleware,
+        RefererMiddleware, UrlLengthMiddleware, DepthMiddleware"},{"time":1447544429512,"level":20,"message":"[scrapy.middleware]
+        Enabled item pipelines: "},{"time":1447544429512,"level":20,"message":"[scrapy.core.engine]
+        Spider opened"},{"time":1447544429730,"level":20,"message":"[scrapy.extensions.logstats]
+        Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)"},{"time":1447544429732,"level":20,"message":"TelnetConsole
+        starting on 6023"},{"time":1447544429853,"level":20,"message":"[scrapy.core.engine]
+        Closing spider (finished)"},{"time":1447544431222,"level":20,"message":"[scrapy.statscollectors]
+        Dumping Scrapy stats:\n{''downloader/request_bytes'': 224,\n ''downloader/request_count'':
+        1,\n ''downloader/request_method_count/GET'': 1,\n ''downloader/response_bytes'':
+        1569,\n ''downloader/response_count'': 1,\n ''downloader/response_status_count/200'':
+        1,\n ''finish_reason'': ''finished'',\n ''finish_time'': datetime.datetime(2015,
+        11, 14, 23, 40, 29, 854011),\n ''item_scraped_count'': 10,\n ''log_count/INFO'':
+        8,\n ''memusage/max'': 57053184,\n ''memusage/startup'': 57053184,\n ''response_received_count'':
+        1,\n ''scheduler/dequeued'': 1,\n ''scheduler/dequeued/disk'': 1,\n ''scheduler/enqueued'':
+        1,\n ''scheduler/enqueued/disk'': 1,\n ''start_time'': datetime.datetime(2015,
+        11, 14, 23, 40, 29, 730162)}"},{"time":1447544431328,"level":20,"message":"[scrapy.core.engine]
+        Spider closed (finished)"},{"time":1447544431330,"level":20,"message":"(TCP
+        Port 6023 Closed)"},{"time":1447544431330,"level":20,"message":"Main loop
+        terminated."}]'
+    http_version:
+  recorded_at: Mon, 16 Nov 2015 02:09:10 GMT
+recorded_with: VCR 3.0.0

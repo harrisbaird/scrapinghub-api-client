@@ -1,27 +1,31 @@
 require 'spec_helper'
 
 RSpec.describe Scrapinghub::Jobs do
-  let(:instance) { Scrapinghub::Jobs.new('SAMPLE_API_KEY') }
+  let(:client) { Scrapinghub::Client.new('SAMPLE_API_KEY') }
+  let(:instance) { client.jobs }
+
+  describe 'Authentication failed', vcr: { cassette_name: 'jobs/auth_failed' }  do
+    it do
+      expect { instance.list('00000') }.to raise_error Scrapinghub::AuthFailed
+    end
+  end
 
   describe '#schedule' do
     context 'with required args', vcr: { cassette_name: 'jobs/schedule/required_args' } do
       it 'schedules a job' do
         result = instance.schedule('00000', 'test_scraper')
-        expect(result).to eq '00000/1/8'
+        expect(result).to be_kind_of Scrapinghub::Job
+        expect(result.id).to eq '00000/1/8'
+        expect(result.client).to eq client
       end
     end
 
     context 'with optional args', vcr: { cassette_name: 'jobs/schedule/optional_args' } do
       it 'schedules a job' do
         result = instance.schedule('00000', 'test_scraper', add_tag: %w(tag1 tag2))
-        expect(result).to eq '00000/1/9'
-      end
-    end
-
-    context 'with multiple spiders', vcr: { cassette_name: 'jobs/schedule/multiple' } do
-      it 'schedules a job but only returns a single job id' do
-        result = instance.schedule('00000', %w(test_scraper test_scraper_2), add_tag: %w(tag1 tag2))
-        expect(result).to eq '00000/2/3'
+        expect(result).to be_kind_of Scrapinghub::Job
+        expect(result.id).to eq '00000/1/9'
+        expect(result.client).to eq client
       end
     end
 
